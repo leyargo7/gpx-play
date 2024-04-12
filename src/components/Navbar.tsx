@@ -26,7 +26,7 @@ const Navbar = () => {
     <nav className="bg-zinc-900 p-4">
       <div className="flex justify-between container mx-auto">
         <Link href="/">
-          <h1 className="font-bold text-xl">NextAuth</h1>
+          <h1 className="font-bold text-xl">GoPraxis</h1>
         </Link>
 
         <ul className="flex gap-x-2">

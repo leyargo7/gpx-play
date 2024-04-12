@@ -4,7 +4,11 @@ export const config = {
     matcher: [
         '/',
         '/dashboard',
-        '/payment'
+        '/payment',
+        '/redirectpay',
+        '/api/sandboxevent',
+
+        
 
     ]
 }
