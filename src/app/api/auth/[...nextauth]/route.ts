@@ -13,7 +13,7 @@ const handler = NextAuth({
                 email: { label: "Email", type: "email", placeholder: "leyargo" },
                 password: { label: "Password", type: "password", placeholder:"*********" }
             },
-            async  authorize(credentials, req) {
+            async authorize(credentials, req) {
                 await connectDB();
 
                 const userFound = await User.findOne({ email: credentials?.email }).select("+password");

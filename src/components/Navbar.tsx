@@ -8,20 +8,20 @@ interface User {
 }
 
 import { useSession, signOut } from 'next-auth/react'
-//import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 const Navbar = () => {
   const { data: session, status } = useSession()
-  // const [name, setName] = useState<string | undefined>()
+  const [name, setName] = useState<string | undefined>()
 
-  // useEffect(() => {
-  //   if (status === 'authenticated') {
-  //     setName(session.user?.fullname)
-  //   }
-  // }, [status, session])
+  useEffect(() => {
+    if (status === 'authenticated') {
+      setName((session.user as User).fullname)
+    }
+  }, [status, session])
 
-  //console.log("name ", name)
+  console.log("name ", name)
   return (
     <nav className="bg-zinc-900 p-4">
       <div className="flex justify-between container mx-auto">
@@ -32,7 +32,7 @@ const Navbar = () => {
         <ul className="flex gap-x-2">
           {session ? (
             <>
-              <li className="px-3 py-1">{(session.user as User).fullname}</li>
+              <li className="px-3 py-1">{name}</li>
               <li className="px-3 py-1">
                 <Link href="/dashboard">Admin</Link>
               </li>
