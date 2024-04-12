@@ -29,7 +29,7 @@ function FormPay({ reference, integrity, fullname, email, monto}: PayData) {
         <input
           type="hidden"
           name="redirect-url"
-          value="http://localhost:3000/redirectpay"
+          defaultValue="https://gpx-play.vercel.app/redirectpay"
         />
          {/* <input type="hidden" name="expiration-time" value="FECHA_EXPIRACION" />
         <input type="hidden" name="tax-in-cents:vat" value="IVA_EN_CENTAVOS" />
