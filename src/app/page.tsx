@@ -10,25 +10,25 @@ interface User {
 }
 
 function HomePage() {
-  const session  = useSession()
-  const [dataSession, setDataSession] = useState<User>()
+  const { data: session, status }  = useSession()
+
   const router = useRouter()
 
   useEffect(() => {
-    if (session.data) {
-      setDataSession(session.data.user as User)
+    if (status === "authenticated") {
+      if((session.user as User).member === true) {
+        router.push("/")
+      }else if((session.user as User).member === false){
+        router.push("/payment")
+      }
+ 
       
     }
-  }, [session])
+  }, [
+    status,
+    session
+  ])
 
-  useEffect(() => {
-    if(dataSession?.member === false){
-      router.push('/payment')
-    }else if(dataSession?.member === true){
-      router.push('/')
-    }
-
-  }, [dataSession, router])
   
 
   return (
