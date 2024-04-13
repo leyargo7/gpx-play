@@ -5,11 +5,7 @@ export const config = {
         '/',
         '/payment',
         '/redirectpay',
-        '/api/sandboxevent',
-        '/dashboard',
-
-        
-
+        '/dashboard'
     ]
 }
 

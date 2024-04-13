@@ -26,7 +26,8 @@ function HomePage() {
     }
   }, [
     status,
-    session
+    session,
+    router
   ])
 
   

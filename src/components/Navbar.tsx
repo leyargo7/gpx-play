@@ -21,7 +21,7 @@ const Navbar = () => {
     }
   }, [status, session])
 
-  console.log("name ", name)
+
   return (
     <nav className="bg-zinc-900 p-4">
       <div className="flex justify-between container mx-auto">
