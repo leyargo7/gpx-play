@@ -12,11 +12,11 @@ function hash(data: string) {
 
 export async function POST(request: Request) {
   await connectDB()
-  const data = await request.json()
-  console.log(data)
+  const { data, signature, timestamp } = await request.json()
+  
 
   //firma asimetrica
-  /*let cadena =
+  let cadena =
     data.transaction.id +
     data.transaction.status +
     data.transaction.amount_in_cents +
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
     }
     
   }
-  //console.log(data.transaction.customer_email)*/
+  //console.log(data.transaction.customer_email)
 
   return NextResponse.json({ message: 'Hello, World!' })
 }
@@ -54,8 +54,15 @@ export async function POST(request: Request) {
 export async function GET(request: Request) {
   await connectDB()
 
-  const data = await Transaction.findOne().sort({ _id: -1 })
-  //console.log(data.transaction.signature.properties[2]);
-  console.log(data.transaction.data.transaction.id)
-  return NextResponse.json(data)
+  try {
+    
+    const data = await Transaction.findOne().sort({ _id: -1 })
+    //console.log(data.transaction.signature.properties[2]);
+    console.log(data.transaction.data.transaction.id)
+    return NextResponse.json(data)
+  }catch (error) {
+    console.log(error)
+    return NextResponse.json({ message: 'Error' })
+    
+  }
 }

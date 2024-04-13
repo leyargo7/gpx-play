@@ -15,16 +15,21 @@ function HomePage() {
   const router = useRouter()
 
   useEffect(() => {
-    if (status === 'authenticated') {
-      if ((session.user as User).member === true) {
-        router.push('/room')
-      } else if ((session.user as User).member === false) {
+    if (status !== 'loading') {
+      if(session === null) {
+        router.push('/login')
+      } else if((session?.user as User).member === false) {
         router.push('/payment')
       }
     }
-  }, [status, session, router])
+  }, [status, session, router]);
 
-  console.log(status)
+  if (status === 'loading') {
+    return <p>Loading...</p>
+  }
+
+  console.log(session)
+
   return (
     <div>
       <h1>Gpx Media</h1>
