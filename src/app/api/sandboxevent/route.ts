@@ -12,10 +12,11 @@ function hash(data: string) {
 
 export async function POST(request: Request) {
   await connectDB()
-  const { data, timestamp, signature } = await request.json()
+  const data = await request.json()
+  console.log(data)
 
   //firma asimetrica
-  let cadena =
+  /*let cadena =
     data.transaction.id +
     data.transaction.status +
     data.transaction.amount_in_cents +
@@ -45,7 +46,7 @@ export async function POST(request: Request) {
     }
     
   }
-  //console.log(data.transaction.customer_email)
+  //console.log(data.transaction.customer_email)*/
 
   return NextResponse.json({ message: 'Hello, World!' })
 }
