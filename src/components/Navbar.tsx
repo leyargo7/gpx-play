@@ -36,7 +36,9 @@ const Navbar = () => {
               <li className="px-3 py-1">
                 <Link href="/dashboard">Admin</Link>
               </li>
-              <button onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => signOut()}>Cerrar</button>
+              <button onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => signOut(
+                { callbackUrl: `${process.env.NEXT_PUBLIC_HOME}/login` }
+              )}>Cerrar</button>
             </>
           ) : (
             <>

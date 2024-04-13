@@ -17,7 +17,9 @@ function Dashboard() {
         session && <p>{session.user?.email}</p> 
       }
 
-      <button onClick={(event: React.MouseEvent<HTMLButtonElement>) => signOut()}>Logout</button>
+      <button onClick={(event: React.MouseEvent<HTMLButtonElement>) => signOut(
+        { callbackUrl: `${process.env.NEXT_PUBLIC_HOME}/login` }
+      )}>Logout</button>
     </div>
   )
 }
