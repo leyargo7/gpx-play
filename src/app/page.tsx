@@ -28,7 +28,6 @@ function HomePage() {
     return <p>Loading...</p>
   }
 
-  console.log(session)
 
   return (
     <div>

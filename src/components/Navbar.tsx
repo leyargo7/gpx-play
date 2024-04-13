@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 interface User {
   fullname: string
@@ -13,6 +14,8 @@ import { useEffect, useState } from 'react'
 
 const Navbar = () => {
   const { data: session, status } = useSession()
+  const router = useRouter()
+
   const [name, setName] = useState<string | undefined>()
 
   useEffect(() => {
@@ -36,9 +39,10 @@ const Navbar = () => {
               <li className="px-3 py-1">
                 <Link href="/dashboard">Admin</Link>
               </li>
-              <button onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => signOut(
-                { callbackUrl: `${process.env.NEXT_PUBLIC_HOME}/login` }
-              )}>Cerrar</button>
+              <button onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => 
+                signOut({redirect:false}).then(()=>{
+                  router.push('/')
+                })}>Cerrar</button>
             </>
           ) : (
             <>
