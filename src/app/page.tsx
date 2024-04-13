@@ -11,7 +11,6 @@ interface User {
 
 function HomePage() {
   const { data: session, status } = useSession()
-  const [flag, setFlag] = useState(true)
 
   const router = useRouter()
 
@@ -25,6 +24,7 @@ function HomePage() {
     }
   }, [status, session, router])
 
+  console.log(status)
   return (
     <div>
       <h1>Gpx Media</h1>
