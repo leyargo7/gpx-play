@@ -17,7 +17,7 @@ function HomePage() {
   useEffect(() => {
     if (status === 'authenticated') {
       if ((session.user as User).member === true) {
-        router.push('/')
+        router.push('/room')
       } else if ((session.user as User).member === false) {
         router.push('/payment')
       }
