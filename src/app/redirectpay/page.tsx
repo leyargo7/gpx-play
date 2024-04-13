@@ -28,6 +28,7 @@ function RedirectPay() {
     router
   ])
 
+  console.log(status)
   return (
     <div className="flex items-center justify-center h-screen">
       <Link href='/'>
