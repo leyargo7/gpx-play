@@ -15,5 +15,6 @@ export async function POST(request: Request) {
     }
 
     console.log("data enviada a la db")
+    console.log(data)
     return NextResponse.json({ message: "Hello, World!" }); 
 }
