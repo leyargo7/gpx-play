@@ -50,13 +50,13 @@ function RegisterPage() {
         <input
           type="text"
           name="fullname"
-          placeholder="John Doe"
+          placeholder="Nombre Completo"
           className="bg-zinc-800 px-4 py-2 block mb-2 w-full"
         />
         <input
           type="email"
           name="email"
-          placeholder="someemail@gmail.com"
+          placeholder="Tu email"
           className="bg-zinc-800 px-4 py-2 block mb-2 w-full"
         />
         <input

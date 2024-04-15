@@ -42,7 +42,7 @@ export async function GET() {
 
     const checksumWompi = data.transaction.signature.checksum
 
-    if (integrity === checksumWompi) {
+    if (integrity === checksumWompi && data.transaction.data.transaction.status === 'APPROVED') {
       try {
         const user = await User.findOneAndUpdate(
           {
