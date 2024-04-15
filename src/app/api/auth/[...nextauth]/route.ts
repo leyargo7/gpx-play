@@ -26,7 +26,8 @@ const handler = NextAuth({
         })
     ],
     callbacks: {
-        jwt({ account, token, user, profile, session }){
+        jwt({ account, token, user, profile, session, trigger }){
+
             if(user){
                 token.user = user;
             }

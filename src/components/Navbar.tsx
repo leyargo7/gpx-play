@@ -1,6 +1,8 @@
 'use client'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useSession, signOut } from 'next-auth/react'
+import { useEffect, useState } from 'react'
 
 interface User {
   fullname: string
@@ -8,8 +10,6 @@ interface User {
   member: boolean
 }
 
-import { useSession, signOut } from 'next-auth/react'
-import { useEffect, useState } from 'react'
 
 
 const Navbar = () => {

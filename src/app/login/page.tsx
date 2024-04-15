@@ -1,13 +1,21 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 
 function LoginPage() {
   const [error, setError] = useState('')
   const router = useRouter()
+  const { data: session } = useSession()
+  
+  useEffect(() => {
+    if(session){
+      router.push('/')
+    }
+  }, [session, router])
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
