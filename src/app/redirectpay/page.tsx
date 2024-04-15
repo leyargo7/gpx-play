@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
 import axios from 'axios'
@@ -24,7 +24,6 @@ const dataBackend = async () => {
   return response.data
 }
 
-
 function RedirectPay() {
   const [dataTrans, setDataTrans] = useState()
   const [dataBack, setDataBack] = useState()
@@ -39,7 +38,6 @@ function RedirectPay() {
         dataWompiTransaction(id).then((data) => {
           setDataTrans(data)
         })
-        
       }
     }
   }, [status, id])
@@ -48,7 +46,6 @@ function RedirectPay() {
     dataBackend().then((data) => {
       setDataBack(data)
     })
-
   }, [])
 
   const btnComprobar = async () => {
@@ -56,8 +53,10 @@ function RedirectPay() {
     //const info = res.data
     //console.log(dataBack)
 
-
-    if ((dataBack as any)?.data?.transaction?.data?.transaction?.status === 'APPROVED') {
+    if (
+      (dataBack as any)?.data?.transaction?.data?.transaction?.status ===
+      'APPROVED'
+    ) {
       if ((dataBack as any)?.user?.member) {
         signOut({ redirect: false }).then(() => {
           router.push('/login')
@@ -68,21 +67,22 @@ function RedirectPay() {
     } else {
       router.push('/errortrans')
     }
- 
-    
   }
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      {dataTrans &&
-      (dataTrans as { data: { status: string } }).data.status === 'APPROVED' ? (
-        <button onClick={btnComprobar} className="bg-indigo-500 px-4 py-2">
-          Disfruta
-        </button>
-      ) : (
-        <p>loading... </p>
-      )}
-    </div>
+    <Suspense>
+      <div className="flex items-center justify-center h-screen">
+        {dataTrans &&
+        (dataTrans as { data: { status: string } }).data.status ===
+          'APPROVED' ? (
+          <button onClick={btnComprobar} className="bg-indigo-500 px-4 py-2">
+            Disfruta
+          </button>
+        ) : (
+          <p>loading... </p>
+        )}
+      </div>
+    </Suspense>
   )
 }
 
