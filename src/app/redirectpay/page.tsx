@@ -92,22 +92,7 @@ function RedirectPay({ searchParams }: any) {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen text-white">
-      {/* {dataBack &&
-        (dataBack as any)?.data?.transaction?.data?.transaction?.status ===
-          'APPROVED' ? (
-          <div>
-            <p className="text-2xl font-bold">Estado: {(dataTrans as any)?.data?.status ?? ''}</p>
-            <p className="text-2xl font-bold">Fecha: {(dataTrans as any)?.data?.created_at ?? ''}</p>
-            <p className="text-2xl font-bold">Fecha de finalizacion: {(dataTrans as any)?.data?.finalized_at ?? ''}</p>
-            <p className="text-2xl font-bold">Transaccion: {(dataTrans as any)?.data?.id ?? ''}</p>
-            <p className="text-2xl font-bold">Metodo pago: {(dataTrans as any)?.data?.payment_method.type ?? ''}</p>
-            <button onClick={btnComprobar} className="bg-indigo-500 px-4 py-2">
-              Inicia Sesión para Disfrutar!
-            </button>
-          </div>
-        ) : (
-          <p>...</p>
-        )} */}
+      
         {dataBack && (
           <div>
             <p className="text-2xl font-bold">Estado: {(dataTrans as any)?.data?.status ?? ''}</p>
