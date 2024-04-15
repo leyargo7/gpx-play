@@ -57,14 +57,14 @@ function RedirectPay() {
     //console.log(dataBack)
 
 
-    if(dataBack.data.transaction.data.transaction.status === 'APPROVED'){
-      if (dataBack.user.member) {
-            signOut({ redirect: false }).then(() => {
-              router.push('/login')
-            })
-          } else {
-            router.push('/register')
-          }
+    if ((dataBack as any)?.data?.transaction?.data?.transaction?.status === 'APPROVED') {
+      if ((dataBack as any)?.user?.member) {
+        signOut({ redirect: false }).then(() => {
+          router.push('/login')
+        })
+      } else {
+        router.push('/register')
+      }
     } else {
       router.push('/errortrans')
     }
