@@ -9,7 +9,7 @@ const { KEY_EVENTS } = process.env
 export async function POST(request: Request) {
   await connectDB()
 
-  const { transaction } = await request.json()
+  const transaction = await request.json()
 
   if (transaction) {
     const newTransaction = await new Transaction({

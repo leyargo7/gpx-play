@@ -5,7 +5,6 @@ import { Suspense, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 //import { useSearchParams } from 'next/navigation'
 import axios from 'axios'
-import { set } from 'mongoose'
 
 interface User {
   member: boolean
@@ -89,33 +88,39 @@ function RedirectPay({ searchParams }: any) {
       setErrors(['Error'])
     }
   }
-
+  console.log("transacccion", dataTrans)
+  console.log("databack", dataBack)
   return (
     <div className="flex flex-col items-center justify-center h-screen text-white">
-      
-        {dataBack && (
-          <div>
-            <p className="text-2xl font-bold">Estado: {(dataTrans as any)?.data?.status ?? ''}</p>
-            <p className="text-2xl font-bold">Fecha: {(dataTrans as any)?.data?.created_at ?? ''}</p>
-            <p className="text-2xl font-bold">Fecha de finalizacion: {(dataTrans as any)?.data?.finalized_at ?? ''}</p>
-            <p className="text-2xl font-bold">Transaccion: {(dataTrans as any)?.data?.id ?? ''}</p>
-            <p className="text-2xl font-bold">Metodo pago: {(dataTrans as any)?.data?.payment_method.type ?? ''}</p>
-            {
-              (dataBack as any)?.data?.transaction?.data?.transaction?.status ===
-              'APPROVED' ? (
-                <button onClick={btnComprobar} className="bg-indigo-500 px-4 py-2">
-              Inicia Sesión para Disfrutar!
-            </button>) : (
-              <Link href='/errortrans'>
-                Escribir a Soporte
-              </Link>
-             )
+      {dataBack && (
+        <div>
+          <p className="text-2xl font-bold">
+            Estado: {(dataTrans as any)?.data?.status ?? ''}
+          </p>
+          <p className="text-2xl font-bold">
+            Fecha: {(dataTrans as any)?.data?.created_at ?? ''}
+          </p>
+          <p className="text-2xl font-bold">
+            Fecha de finalizacion:{' '}
+            {(dataTrans as any)?.data?.finalized_at ?? ''}
+          </p>
+          <p className="text-2xl font-bold">
+            Transaccion: {(dataTrans as any)?.data?.id ?? ''}
+          </p>
+          <p className="text-2xl font-bold">
+            Metodo pago: {(dataTrans as any)?.data?.payment_method.type ?? ''}
+          </p>
+        </div>
+      )}
 
-            }
-          </div>
-        )
-        
-        }
+      {dataBack && (dataBack as any)?.data?.transaction?.data?.transaction?.status ===
+      'APPROVED' ? (
+        <button onClick={btnComprobar} className="bg-indigo-500 px-4 py-2">
+          Inicia Sesión para Disfrutar!
+        </button>
+      ) : (
+        <Link href="/errortrans">Escribir a Soporte</Link>
+      )}
 
       {errors.map((error) => (
         <div key={error} className="bg-red-500 text-white p-2 mb-2">
