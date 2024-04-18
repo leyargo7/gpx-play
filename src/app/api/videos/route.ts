@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server'
 import { connectDB } from '@/libs/mongodb'
 import Video from '@/models/videos'
-import dbVideos from '@/utils/dbVideos.json'
 
 // obtener todos los videos
 export async function GET() {

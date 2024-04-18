@@ -10,7 +10,7 @@ const { NEXT_PUBLIC_BACKEND_URL } = process.env
 
 const getVideos = async (id: string) => {
   try {
-    const response = await axios.get(`${NEXT_PUBLIC_BACKEND_URL}/api/mediavideos/${id}`)
+    const response = await axios.get(`${NEXT_PUBLIC_BACKEND_URL}/api/videos/${id}`)
     return response.data
     
   } catch (error) {
