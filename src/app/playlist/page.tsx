@@ -13,19 +13,23 @@ interface Video {
 
 const { NEXT_PUBLIC_BACKEND_URL } = process.env
 
+
 const getVideos = async () => {
+  const apiUrl = `${NEXT_PUBLIC_BACKEND_URL}/api/videos`
+  console.log("apiUrl", apiUrl)
   try {
     const response = await axios.get(`${NEXT_PUBLIC_BACKEND_URL}/api/videos`)
     return response.data
   } catch (error) {
     console.error(error)
-    return undefined
+    return error
     
   }
 }
 
 async function MainVideos() {
   const dbVideos = await getVideos()
+  console.log("data ", dbVideos)
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 justify-center p-4">
@@ -47,7 +51,6 @@ async function MainVideos() {
         </Link>
       ))}
     </div>
-    
   )
 }
 
