@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <nav className="bg-zinc-900 p-4">
       <div className="flex justify-between container mx-auto">
-        <Link href="/">
+        <Link href="/playlist">
           <h1 className="font-bold text-xl">GoPraxis</h1>
         </Link>
 
@@ -36,13 +36,13 @@ const Navbar = () => {
           {session ? (
             <>
               <li className="px-3 py-1">{name}</li>
-              <li className="px-3 py-1">
+              {/* <li className="px-3 py-1">
                 <Link href="/dashboard">Admin</Link>
-              </li>
+              </li> */}
               <button onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => 
                 signOut({redirect:false}).then(()=>{
                   router.push('/')
-                })}>Cerrar</button>
+                })}>Log Out</button>
             </>
           ) : (
             <>

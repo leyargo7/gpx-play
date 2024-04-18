@@ -5,8 +5,10 @@ import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
+import style from '@/app/login/login.module.css'
 
 function LoginPage() {
+  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
   const router = useRouter()
   const { data: session } = useSession()
@@ -19,6 +21,7 @@ function LoginPage() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setIsLoading(true)
 
     const formData = new FormData(e.currentTarget)
 
@@ -28,8 +31,11 @@ function LoginPage() {
       redirect: false,
     })
 
-    if (res?.error) return setError(res.error as string)
-    if (res?.ok) return router.push('/')
+    if (res?.error) {
+      setIsLoading(false)
+      return setError(res.error as string)
+    }
+    if (res?.ok) return router.push('/playlist')
   }
 
   return (
@@ -52,7 +58,14 @@ function LoginPage() {
           className="bg-zinc-800 px-4 py-2 block mb-2 w-full"
         />
 
-        <button className="bg-indigo-500 px-4 py-2">Login</button>
+        {
+          isLoading ? (
+            <div className={style.ldsripple}><div></div><div></div></div>
+          ) : (
+            <button className="bg-indigo-500 px-4 py-2 mt-4">Login</button>
+          )
+        }
+ 
 
         <p className="mt-4">
           No tienes cuenta? <Link href="/register" className="text-indigo-500">Regístrate</Link>

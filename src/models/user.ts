@@ -21,7 +21,19 @@ const userSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    admin:{
+        type: Boolean,
+        default: false,
+    },
+    isActive:{
+        type: Boolean,
+        default: false,
     
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
 },{
     timestamps: true,
     versionKey: false,

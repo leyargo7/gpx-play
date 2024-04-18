@@ -6,6 +6,8 @@ interface PayData {
   monto: string
 }
 
+const {KEY_PUBLIC} = process.env
+
 function FormPay({ reference, integrity, fullname, email, monto}: PayData) {
 
   return (
@@ -15,7 +17,7 @@ function FormPay({ reference, integrity, fullname, email, monto}: PayData) {
         <input
           type="hidden"
           name="public-key"
-          value="pub_test_aIO08rysjCio6qBxsPa5Rlyhmb42vITM"
+          defaultValue={KEY_PUBLIC}
         />
         <input type="hidden" name="currency" defaultValue="COP" />
         <input type="hidden" name="amount-in-cents" defaultValue={monto} />
@@ -89,7 +91,7 @@ function FormPay({ reference, integrity, fullname, email, monto}: PayData) {
           name="shipping-address:region"
           value="REGION_DE_ENVIO"
         /> */}
-        <button type="submit">Pagar con Wompi</button>
+        <button type="submit" className="bg-amber-500 px-4 py-2 rounded-lg text-black font-bold hover:bg-slate-300 hover:text-xl">Pagar con Wompi</button>
       </form>
     </div>
   )

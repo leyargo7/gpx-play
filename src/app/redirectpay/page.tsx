@@ -6,11 +6,11 @@ import { useRouter } from 'next/navigation'
 //import { useSearchParams } from 'next/navigation'
 import axios from 'axios'
 
-interface User {
-  member: boolean
-  fullname: string
-  email: string
-}
+  interface User {
+    member: boolean
+    fullname: string
+    email: string
+  }
 
 const dataWompiTransaction = async (id: string) => {
   const response = await axios.get(
@@ -64,9 +64,7 @@ function RedirectPay({ searchParams }: any) {
   }, [dataTrans]) // Include 'dataTrans' in the dependency array
 
   const btnComprobar = async () => {
-    //const res = await axios.get('/api/sandboxevent')
-    //const info = res.data
-    //console.log(dataBack)
+
 
     try {
       if (
@@ -84,12 +82,11 @@ function RedirectPay({ searchParams }: any) {
         router.push('/errortrans')
       }
     } catch (error) {
-      console.log(error)
+
       setErrors(['Error'])
     }
   }
-  console.log("transacccion", dataTrans)
-  console.log("databack", dataBack)
+
   return (
     <div className="flex flex-col items-center justify-center h-screen text-white">
       {dataBack && (

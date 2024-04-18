@@ -3,9 +3,12 @@ export {default} from "next-auth/middleware"
 export const config = {
     matcher: [
         '/',
+        '/admin/:path*',
         '/payment',
         '/redirectpay/:path*',
-        '/dashboard'
+        '/dashboard',
+        '/playlist/:path*',
+        '/occupated'
     ]
 }
 

@@ -4,15 +4,18 @@ import { FormEvent, useState } from 'react'
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import style from '@/app/register/register.module.css'
 
 function RegisterPage() {
 
+  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState();
   const router = useRouter();
 
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setIsLoading(true)
     const formData = new FormData(e.currentTarget)
 
     try {
@@ -35,6 +38,7 @@ function RegisterPage() {
 
     } catch (error) {
       if(error instanceof AxiosError){
+        setIsLoading(false)
         setError(error.response?.data.message)
       }
     }
@@ -65,8 +69,15 @@ function RegisterPage() {
           placeholder="********"
           className="bg-zinc-800 px-4 py-2 block mb-2 w-full"
         />
+        {
+          isLoading ? (
+            <div className={style.ldsripple}><div></div><div></div></div>
+          ) : (
+            <button className="bg-indigo-500 px-4 py-2">Register</button>
+          )
+        }
 
-        <button className="bg-indigo-500 px-4 py-2">Register</button>
+        
         <p className="mt-4">
           Ya tienes una cuenta? <Link href="/login" className="text-indigo-500">Entra</Link>
         </p>
