@@ -11,10 +11,10 @@ interface Video {
   thumbnailUrl: string
 }
 
-//const { NEXT_PUBLIC_BACKEND_URL } = process.env
+const { NEXT_PUBLIC_BACKEND_URL } = process.env
 
 const getVideos = async () => {
-  const response = await axios.get('/api/mediavideos')
+  const response = await axios.get(`${NEXT_PUBLIC_BACKEND_URL}/api/mediavideos`)
   return response.data
 }
 
