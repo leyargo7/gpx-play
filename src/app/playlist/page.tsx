@@ -1,4 +1,4 @@
-
+/*
 import Link from 'next/link'
 import axios from 'axios'
 import Image from 'next/image'
@@ -61,4 +61,15 @@ async function MainVideos() {
 }
 
 export default MainVideos
+*/
 
+
+function MainVideos() {
+  return (
+    <div>
+      <h1>hola</h1>
+    </div>
+  )
+}
+
+export default MainVideos
