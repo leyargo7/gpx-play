@@ -8,7 +8,6 @@ export async function GET() {
 
   try {
     const videos = await Video.find()
-    console.log("videos ", videos)
   
     return NextResponse.json(videos)
     
