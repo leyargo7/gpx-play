@@ -14,8 +14,14 @@ interface Video {
 const { NEXT_PUBLIC_BACKEND_URL } = process.env
 
 const getVideos = async () => {
-  const response = await axios.get(`${NEXT_PUBLIC_BACKEND_URL}/api/mediavideos`)
-  return response.data
+  try {
+    const response = await axios.get(`${NEXT_PUBLIC_BACKEND_URL}/api/mediavideos`)
+    return response.data
+  } catch (error) {
+    console.error(error)
+    return undefined
+    
+  }
 }
 
 async function MainVideos() {
