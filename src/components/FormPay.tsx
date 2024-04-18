@@ -6,7 +6,8 @@ interface PayData {
   monto: string
 }
 
-const {KEY_PUBLIC} = process.env
+const {NEXT_PUBLIC_KEY_PUBLIC} = process.env
+console.log(NEXT_PUBLIC_KEY_PUBLIC)
 
 function FormPay({ reference, integrity, fullname, email, monto}: PayData) {
 
@@ -17,7 +18,7 @@ function FormPay({ reference, integrity, fullname, email, monto}: PayData) {
         <input
           type="hidden"
           name="public-key"
-          defaultValue={KEY_PUBLIC}
+          defaultValue={NEXT_PUBLIC_KEY_PUBLIC}
         />
         <input type="hidden" name="currency" defaultValue="COP" />
         <input type="hidden" name="amount-in-cents" defaultValue={monto} />
