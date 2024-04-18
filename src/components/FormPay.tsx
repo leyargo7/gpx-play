@@ -17,7 +17,7 @@ function FormPay({ reference, integrity, fullname, email, monto}: PayData) {
         <input
           type="hidden"
           name="public-key"
-          defaultValue='pub_test_aIO08rysjCio6qBxsPa5Rlyhmb42vITM'
+          defaultValue='pub_prod_HrOKCakbJuHyb3hSbFsBtPytbTzgYLbV'
         />
         <input type="hidden" name="currency" defaultValue="COP" />
         <input type="hidden" name="amount-in-cents" defaultValue={monto} />
