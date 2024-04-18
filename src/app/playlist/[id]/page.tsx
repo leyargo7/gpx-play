@@ -9,7 +9,7 @@ interface CardVideoProps {
 const { NEXT_PUBLIC_BACKEND_URL } = process.env
 
 const getVideos = async (id: string) => {
-  const response = await axios.get(`${NEXT_PUBLIC_BACKEND_URL}/api/mediavideos/${id}`)
+  const response = await axios.get(`/api/mediavideos/${id}`)
   return response.data
 }
 
