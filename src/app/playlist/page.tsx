@@ -15,10 +15,9 @@ const { NEXT_PUBLIC_BACKEND_URL } = process.env
 
 
 const getVideos = async () => {
-  const apiUrl = `${NEXT_PUBLIC_BACKEND_URL}/api/videos`
-  console.log("apiUrl", apiUrl)
+ 
   try {
-    const response = await axios.get(`${NEXT_PUBLIC_BACKEND_URL}/api/videos`)
+    const response = await axios.get('https://gpx-play.vercel.app/api/videos')
     return response.data
   } catch (error) {
     console.error(error)
