@@ -7,9 +7,19 @@ import dbVideos from '@/utils/dbVideos.json'
 export async function GET() {
   await connectDB()
 
-  const videos = await Video.find()
+  try {
+    const videos = await Video.find()
+  
+    return NextResponse.json(videos)
+    
+  } catch (error) {
+    if (error) {
+      return NextResponse.json(error
+      )
+    }
+    
+  }
 
-  return NextResponse.json(videos)
 }
 
 export async function POST(request: Request) {
