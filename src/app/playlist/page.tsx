@@ -16,14 +16,8 @@ interface Video {
 const getVideos = async () => {
  
   try {
-    //const response = await axios.get('http://localhost/api/filesServer', {
-    const response = await axios.get('https://gpx-play.vercel.app/api/filesServer', {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-
-    })
+    //const response = await axios.get('http://localhost:3000/api/filesServer')
+    const response = await axios.get('https://gpx-play.vercel.app/api/filesServer')
     return response.data
   } catch (error) {
     console.error(error)
@@ -34,7 +28,8 @@ const getVideos = async () => {
 
 async function MainVideos() {
   const dbVideos = await getVideos()
-  console.log("data ", dbVideos)
+  console.log(dbVideos)
+  
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 justify-center p-4">

@@ -10,10 +10,7 @@ export async function GET() {
     const videos = await Video.find()
     console.log("videos ", videos)
   
-    return NextResponse.json({
-      data: videos
-    }
-    )
+    return NextResponse.json(videos)
     
   } catch (error) {
     if (error) {
