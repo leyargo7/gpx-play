@@ -25,8 +25,8 @@ interface User {
 const getVideos = async () => {
  
   try {
-    //const response = await axios.get('http://localhost:3000/api/filesServer')
-    const response = await axios.get('https://gpx-play.vercel.app/api/videos')
+    const response = await axios.get('http://localhost:3000/api/videos')
+    //const response = await axios.get('https://gpx-play.vercel.app/api/videos')
     const data = response.data
     //console.log(data)
     return data
