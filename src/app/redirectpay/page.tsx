@@ -11,16 +11,29 @@ import axios from 'axios'
     fullname: string
     email: string
   }
+// LOCALHOST
+// const dataWompiTransaction = async (id: string) => {
+//   const response = await axios.get(
+//     `https://sandbox.wompi.co/v1/transactions/${id}`
+//   )
+//   return response.data
+// }
 
+// const dataBackend = async () => {
+//   const response = await axios.get('/api/sandboxevent')
+//   return response.data
+// }
+//-------------------------------------------------------------------
+// PRODUCCION
 const dataWompiTransaction = async (id: string) => {
   const response = await axios.get(
-    `https://sandbox.wompi.co/v1/transactions/${id}`
+    `https://production.wompi.co/v1/transactions/${id}`
   )
   return response.data
 }
 
 const dataBackend = async () => {
-  const response = await axios.get('/api/sandboxevent')
+  const response = await axios.get('/api/productionevent')
   return response.data
 }
 //-------------------------------------------------------------------
