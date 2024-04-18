@@ -11,14 +11,14 @@ interface Video {
   thumbnailUrl: string
 }
 
-const { NEXT_PUBLIC_BACKEND_URL } = process.env
+//const { NEXT_PUBLIC_BACKEND_URL } = process.env
 
 
 const getVideos = async () => {
  
   try {
-    const response = await axios.get('http://localhost/api/filesServer', {
-    //const response = await axios.get('https://gpx-play.vercel.app/api/filesServer', {
+    //const response = await axios.get('http://localhost/api/filesServer', {
+    const response = await axios.get('https://gpx-play.vercel.app/api/filesServer', {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
