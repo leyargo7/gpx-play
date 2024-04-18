@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { v4 as uuidv4 } from 'uuid'
 
 const { SECRET_INTEGRITY } = process.env
-const { PRICE } = process.env
+
 
 interface Pay {
   price: string
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     fullname,
     email,
     referencia: uuidv4(),
-    monto: PRICE,
+    monto: 100000,
     moneda: 'COP',
     secretoIntegridad: SECRET_INTEGRITY,
   }
