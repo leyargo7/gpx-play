@@ -14,7 +14,7 @@ interface Video {
 const { NEXT_PUBLIC_BACKEND_URL } = process.env
 
 const getVideos = async () => {
-  const response = await axios.get(`${NEXT_PUBLIC_BACKEND_URL}/api/videos`)
+  const response = await axios.get(`${NEXT_PUBLIC_BACKEND_URL}/api/mediavideos`)
   return response.data
 }
 
@@ -31,7 +31,7 @@ async function MainVideos() {
             <Image
               src={video.thumbnailUrl}
               alt={video.title}
-              priority={false}
+              priority={true}
               width={300}
               height={300}
               className="object-cover w-full"
