@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <nav className="bg-zinc-900 p-4">
       <div className="flex justify-between container mx-auto">
-        <Link href="/playlist">
+        <Link href="/">
           <h1 className="font-bold text-xl">GoPraxis</h1>
         </Link>
 

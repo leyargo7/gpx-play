@@ -13,30 +13,30 @@ interface User {
   member: boolean
 }
 
-const getUser = async (id: string) => {
-  const response = await axios.get(`/api/users/${id}`)
-  return response.data
-}
+// const getUser = async (id: string) => {
+//   const response = await axios.get(`/api/users/${id}`)
+//   return response.data
+// }
 
 function HomePage() {
-  const { data: session, status } = useSession()
-  const [isLoading, setIsLoading] = useState(false)
+  // const { data: session, status } = useSession()
+  // const [isLoading, setIsLoading] = useState(false)
 
-  const router = useRouter()
+  // const router = useRouter()
 
-  useEffect(() => {
-    if (status !== 'loading') {
-      if (session === null) {
-        router.push('/login')
-      } else if ((session?.user as User).member === false) {
-        router.push('/payment')
-      }
-    }
-  }, [status, session, router])
+  // useEffect(() => {
+  //   if (status !== 'loading') {
+  //     if (session === null) {
+  //       router.push('/login')
+  //     } else if ((session?.user as User).member === false) {
+  //       router.push('/payment')
+  //     }
+  //   }
+  // }, [status, session, router])
 
-  if (status === 'loading') {
-    return <p>Loading...</p>
-  }
+  // if (status === 'loading') {
+  //   return <p>Loading...</p>
+  // }
 
   return (
     <div

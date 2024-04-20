@@ -39,10 +39,7 @@ const handler = NextAuth({
                 email: string, member: boolean};
             return session;
         },
-        async signIn(user){
-            return  "/playlist"
-            
-        }        
+      
     },
     pages: {
         signIn: "/login",
