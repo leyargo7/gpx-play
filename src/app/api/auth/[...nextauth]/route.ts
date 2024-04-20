@@ -26,29 +26,22 @@ const handler = NextAuth({
         })
     ],
     callbacks: {
-        // jwt({ account, token, user, profile, session, trigger }){
 
-        //     if(user){
-        //         token.user = user;
-        //     }
-        //     return token;
-        // },
         async jwt({account, token, user, profile, session, trigger}){
             if(user){
                 token.user = user;
             }
             return token;
         },
-        // session({ session, token}){
-            
-        //     session.user = token.user as {id: string, fullname: string,
-        //      email: string, member: boolean};
-        //     return session;
-        // }
+ 
         async session({ session, token}){
             session.user = token.user as {id: string, fullname: string,
                 email: string, member: boolean};
             return session;
+        },
+        async signIn(user){
+            return  "/playlist"
+            
         }        
     },
     pages: {
