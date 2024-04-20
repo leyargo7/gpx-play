@@ -46,9 +46,9 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <li className="px-3 py-1">
+              {/* <li className="px-3 py-1">
                 <Link href="/about">Acerca de</Link>
-              </li>
+              </li> */}
               <li className="px-3 py-1">
                 <Link href="/login">Iniciar Sesion</Link>
               </li>
